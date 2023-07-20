@@ -164,11 +164,11 @@ export default defineConfig({
           { text: "d3-polygon", link: "/zh-CN/d3-polygon" },
           { text: "d3-quadtree", link: "/zh-CN/d3-quadtree" },
           {
-            text: "d3-scale",
+            text: "d3-scale 比例尺",
             link: "/zh-CN/d3-scale",
             collapsed: true,
             items: [
-              { text: "Linear scales", link: "/zh-CN/d3-scale/linear" },
+              { text: "Linear scale 线性比例尺", link: "/zh-CN/d3-scale/linear" },
               { text: "Time scales", link: "/zh-CN/d3-scale/time" },
               { text: "Pow scales", link: "/zh-CN/d3-scale/pow" },
               { text: "Log scales", link: "/zh-CN/d3-scale/log" },

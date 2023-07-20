@@ -1,12 +1,12 @@
 # d3-scale
 
-Scales map a dimension of abstract data to a visual representation. Although most often used for encoding data as position, say to map time and temperature to a horizontal and vertical position in a scatterplot, scales can represent virtually any visual encoding, such as color, stroke width, or symbol size. Scales can also be used with virtually any type of data, such as named categorical data or discrete data that requires sensible breaks.
+比例尺是将抽象的数据维度进行可视化表达的映射。虽然常用于将数据映射到它本身代表的坐标位置，例如将时间和温度数值映射到散点图横纵坐标对应的位置，但比例尺几乎可以表示任何视觉编码，例如颜色，线条宽度或符号大小。刻度也可以用于几乎任何类型的数据，例如命名的分类数据或需要合理间隔的离散数据。
 
-See one of:
+例如: 
 
-* [Linear scales](./d3-scale/linear.md) - for quantitative data
-* [Time scales](./d3-scale/time.md) - for time-series data
-* [Pow scales](./d3-scale/pow.md) - for quantitative data (that has a wide range)
+* [Linear scales 线性比例尺](./d3-scale/linear.md) - 用于可用数字表示的定量数据
+* [Time scales 时间比例尺](./d3-scale/time.md) - 用于时间序列数据
+* [Pow scales 幂比例尺](./d3-scale/pow.md) - 用于可用数字表示的定量数据(通常有比较大的范围)
 * [Log scales](./d3-scale/log.md) - for quantitative data (that has a wide range)
 * [Symlog scales](./d3-scale/symlog.md) - for quantitative data (that has a wide range)
 * [Ordinal scales](./d3-scale/ordinal.md) - for categorical or ordinal data
