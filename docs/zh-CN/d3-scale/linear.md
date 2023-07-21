@@ -1,12 +1,13 @@
 # Linear scales
 
-Linear scales map a continuous, quantitative input [domain](#linear_domain) to a continuous output [range](#linear_range) using a linear transformation (translate and scale). If the range is also numeric, the mapping may be [inverted](#linear_invert). Linear scales are a good default choice for continuous quantitative data because they preserve proportional differences. Each range value *y* can be expressed as a function of the domain value *x*: *y* = *mx* + *b*.
+线性比例尺使用线性转换的方式将一个连续的定量输入值域[domain](#linear_domain) 映射为一个连续的输出范围[range](#linear_range)。如果输出的范围也是数值，再这个映射可以反转求值 [inverted](#linear_invert)
+线性比例尺是连续定量数据的默认选择，因为它们保持了数据的比例差异。每个范围值 y 可以表示为域值 x 的函数：*y* = *mx* + *b*。
 
 <!-- A continuous scale is not constructed directly; instead, try a [linear](#linear-scales), [power](#power-scales), [log](#log-scales), [identity](#identity-scales), [radial](#radial-scales), [time](#time-scales) or [sequential color](#sequential-scales) scale. -->
 
 ## scaleLinear(*domain*, *range*) {#scaleLinear}
 
-[Examples](https://observablehq.com/@d3/d3-scalelinear) · [Source](https://github.com/d3/d3-scale/blob/main/src/linear.js) · Constructs a new linear scale with the specified [domain](#linear_domain) and [range](#linear_range), the [default](../d3-interpolate/value.md#interpolate) [interpolator](#linear_interpolate), and [clamping](#linear_clamp) disabled.
+[示例](https://observablehq.com/@d3/d3-scalelinear) · [源码](https://github.com/d3/d3-scale/blob/main/src/linear.js) · 构造一个新的线性比例尺，具有指定的域 [domain](#linear_domain)和范围 [range](#linear_range), the [default](../d3-interpolate/value.md#interpolate) [interpolator](#linear_interpolate), and [clamping](#linear_clamp) disabled.
 
 ```js
 d3.scaleLinear([0, 100], ["red", "blue"])
