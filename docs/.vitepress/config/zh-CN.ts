@@ -5,7 +5,7 @@ import { defineConfig } from "vitepress";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "D3 by Observable",
-  description: "The JavaScript library for bespoke data visualization",
+  description: "可实现定制数据可视化的JavaScript库",
   cleanUrls: true,
   head: [
     ["link", { rel: "apple-touch-icon", href: "/logo.png" }],
@@ -30,6 +30,7 @@ export default defineConfig({
     siteTitle: "",
     nav: [
       { text: "首页", link: "/zh-CN/" },
+      { text: "文档", link: "/zh-CN/what-is-d3" },
       {
         text: "示例",
         link: "https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable",
@@ -42,14 +43,14 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: "Introduction",
+        text: "介绍",
         items: [
           { text: "D3是什么?", link: "/zh-CN/what-is-d3" },
           { text: "快速开始", link: "/zh-CN/getting-started" },
         ],
       },
       {
-        text: "Visualization",
+        text: "可视化 Visualization",
         items: [
           { text: "d3-axis", link: "/zh-CN/d3-axis" },
           {
@@ -250,7 +251,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "Animation",
+        text: "动画 Animation",
         items: [
           { text: "d3-ease", link: "/zh-CN/d3-ease" },
           { text: "d3-timer", link: "/zh-CN/d3-timer" },
@@ -277,7 +278,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "Interaction",
+        text: "交互式 Interaction",
         items: [
           { text: "d3-brush", link: "/zh-CN/d3-brush" },
           { text: "d3-dispatch", link: "/zh-CN/d3-dispatch" },
@@ -286,7 +287,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "Data",
+        text: "数据 Data",
         items: [
           {
             text: "d3-array",

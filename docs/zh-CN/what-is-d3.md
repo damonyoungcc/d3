@@ -4,8 +4,8 @@ import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import {useData} from "vitepress";
 import {computed} from "vue";
-import LogoDiagram from "./components/LogoDiagram.vue";
-import PlotRender from "./components/PlotRender.js";
+import LogoDiagram from "../components/LogoDiagram.vue";
+import PlotRender from "../components/PlotRender.js";
 
 const {site: {value: {themeConfig: {sidebar}}}} = useData();
 
