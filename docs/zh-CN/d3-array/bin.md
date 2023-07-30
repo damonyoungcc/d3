@@ -1,6 +1,7 @@
 # Binning data
 
-Bin quantitative values into consecutive, non-overlapping intervals, as in histograms. (See also Observable Plot’s [bin transform](https://observablehq.com/plot/transforms/bin).)
+将定量数据分成连续的、不重叠的区间，类似直方图<br/>
+可以参考 Observable Plot 的[ bin transform ](https://observablehq.com/plot/transforms/bin)。
 
 ## bin() {#bin}
 
@@ -8,7 +9,7 @@ Bin quantitative values into consecutive, non-overlapping intervals, as in histo
 const bin = d3.bin().value((d) => d.culmen_length_mm);
 ```
 
-[Examples](https://observablehq.com/@d3/d3-bin) · [Source](https://github.com/d3/d3-array/blob/main/src/bin.js) · Constructs a new bin generator with the default settings. The returned bin generator supports method chaining, so this constructor is typically chained with [*bin*.value](#bin_value) to assign a value accessor. The returned generator is also a function; [pass it data](#_bin) to bin.
+[示例](https://observablehq.com/@d3/d3-bin) · [源码](https://github.com/d3/d3-array/blob/main/src/bin.js) · 使用默认的设置构建一个新的区间生成器。返回的区间生成器支持方法链，因此通常将此构造函数与 [*bin*.value](#bin_value) 链接在一起，以分配值访问器。返回的生成器也是一个函数，将数据传递给它以进行分组。
 
 ## *bin*(*data*) {#_bin}
 
@@ -16,12 +17,13 @@ const bin = d3.bin().value((d) => d.culmen_length_mm);
 const bins = d3.bin().value((d) => d.culmen_length_mm)(penguins);
 ```
 
-Bins the given iterable of *data* samples. Returns an array of bins, where each bin is an array containing the associated elements from the input *data*. Thus, the `length` of the bin is the number of elements in that bin. Each bin has two additional attributes:
+将给定的数据样本迭代器分组成区间。返回一个由区间组成的数组，其中每个区间都是一个包含输入数据相关元素的数组。因此，区间的长度是该区间中元素的数量。每个区间还有两个额外的属性：
 
-* `x0` - the lower bound of the bin (inclusive).
-* `x1` - the upper bound of the bin (exclusive, except for the last bin).
+* `x0` - 区间的下限（包含）。
+* `x1` - 区间的上限（不包含，最后一个区间除外）。
 
-Any null or non-comparable values in the given *data*, or those outside the [domain](#bin_domain), are ignored.
+给定数据中的任何空值或不可比较值，以及超出定义域范围的值，都将被忽略。
+
 
 ## *bin*.value(*value*) {#bin_value}
 
@@ -29,17 +31,17 @@ Any null or non-comparable values in the given *data*, or those outside the [dom
 const bin = d3.bin().value((d) => d.culmen_length_mm);
 ```
 
-If *value* is specified, sets the value accessor to the specified function or constant and returns this bin generator.
+如果指定了 *value* ，则将值访问器设置为指定的函数或常量，并返回此区间生成器。
 
 ```js
 bin.value() // (d) => d.culmen_length_mm
 ```
 
-If *value* is not specified, returns the current value accessor, which defaults to the identity function.
+如果未指定 *value* ，则返回当前的值访问器，默认为恒等函数。
 
-When bins are [generated](#_bin), the value accessor will be invoked for each element in the input data array, being passed the element `d`, the index `i`, and the array `data` as three arguments. The default value accessor assumes that the input data are orderable (comparable), such as numbers or dates. If your data are not, then you should specify an accessor that returns the corresponding orderable value for a given datum.
+当生成区间时，值访问器将会调用输入的数组中的每个元素，将元素 `d`、索引 `i` 和数组 `data` 作为三个参数传递。默认的值访问器假定输入数据是可排序（可比较）的，例如数字或日期。如果您的数据不是这样的，则应指定一个访问器，返回给定数据的相应可排序值。
 
-This is similar to mapping your data to values before invoking the bin generator, but has the benefit that the input data remains associated with the returned bins, thereby making it easier to access other fields of the data.
+这类似于在调用区间生成器之前将数据映射到值，它的好处在于输入数据与返回的区间保持关联，因此更容易访问数据的其他字段。
 
 ## *bin*.domain(*domain*) {#bin_domain}
 
@@ -47,29 +49,29 @@ This is similar to mapping your data to values before invoking the bin generator
 const bin = d3.bin().domain([0, 1]);
 ```
 
-If *domain* is specified, sets the domain accessor to the specified function or array and returns this bin generator.
+如果指定了 *domain* ，则将域访问器设置为指定的函数或数组，并返回此区间生成器。
 
 ```js
 bin.domain() // [0, 1]
 ```
 
-If *domain* is not specified, returns the current domain accessor, which defaults to [extent](./summarize.md#extent). The bin domain is defined as an array [*min*, *max*], where *min* is the minimum observable value and *max* is the maximum observable value; both values are inclusive. Any value outside of this domain will be ignored when the bins are [generated](#_bin).
+如果未指定 *domain* ，则返回当前的域访问器，默认为 [extent](./summarize.md#extent)。区间的定义域被定义为一个数组 [*min*, *max*]，其中 *min* 是最小的可观测值，*max* 是最大的可观测值；两个值都是包含的(左右都是开区间)。当 [生成区间](#_bin) 时，任何超出此域的值都将被忽略。
 
-For example, to use a bin generator with a [linear scale](../d3-scale/linear.md) `x`, you might say:
+例如，要使用带有[线性比例尺 linear scale](../d3-scale/linear.md) `x` 的区间生成器，可以这样：
 
 ```js
 const bin = d3.bin().domain(x.domain()).thresholds(x.ticks(20));
 ```
 
-You can then compute the bins from an array of numbers like so:
+然后，您可以像这样从数字数组计算出区间：
 
 ```js
 const bins = bin(numbers);
 ```
 
-If the default [extent](./summarize.md#extent) domain is used and the [thresholds](#bin_thresholds) are specified as a count (rather than explicit values), then the computed domain will be [niced](./ticks.md#nice) such that all bins are uniform width.
+如果使用默认的 [extent](./summarize.md#extent) 域，并且 [阈值 thresholds](#bin_thresholds) 是指定为计数（而不是显式值），则计算出的域将被调整为使所有区间具有统一的宽度。
 
-Note that the domain accessor is invoked on the materialized array of [values](#bin_value), not on the input data array.
+请注意，域访问器在实例化的值数组上调用，而不是在输入数据数组上调用。
 
 ## *bin*.thresholds(*count*) {#bin_thresholds}
 

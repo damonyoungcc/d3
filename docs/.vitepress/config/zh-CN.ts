@@ -11,6 +11,11 @@ export default defineConfig({
     ["link", { rel: "apple-touch-icon", href: "/logo.png" }],
     ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
   ],
+  markdown: {
+    externalLinks: {
+      rel: "external"
+    }
+  },
   vite: {
     resolve: {
       alias: [
@@ -22,7 +27,7 @@ export default defineConfig({
           ),
         },
       ],
-    },
+    }
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -34,11 +39,13 @@ export default defineConfig({
       {
         text: "示例",
         link: "https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable",
+        rel: "external"
       },
       { text: "社区", link: "/zh-CN/community" },
       {
         text: "Plot",
         link: "https://observablehq.com/plot?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable",
+        rel: "external"
       },
     ],
     sidebar: [
