@@ -6,7 +6,7 @@ import ExampleBlankChart from "../components/ExampleBlankChart.vue";
 
 # 快速开始
 
-D3可以在任何JavaScript环境中运行.
+D3 可以在任何 JavaScript 环境中运行。
 
 ## Try D3 online
 

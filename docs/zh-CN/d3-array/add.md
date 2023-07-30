@@ -1,6 +1,6 @@
-# Adding numbers
+# 数值求和运算 Adding numbers
 
-Add floating point numbers with full precision.
+以完全的精度进行浮点数值求和运算。
 
 ## new Adder() {#Adder}
 
@@ -8,23 +8,26 @@ Add floating point numbers with full precision.
 const adder = new d3.Adder();
 ```
 
-[Examples](https://observablehq.com/@d3/d3-fsum) · [Source](https://github.com/d3/d3-array/blob/main/src/fsum.js) · Creates a new adder with an initial value of 0.
+[示例](https://observablehq.com/@d3/d3-fsum) · [源码](https://github.com/d3/d3-array/blob/main/src/fsum.js) · 创建一个初始值为 0 的加法器。
 
 ## *adder*.add(*number*) {#adder_add}
 
 ```js
 adder.add(42)
+adder.add(42).add(42)  // 因为返回它自己，因此可以链式调用
 ```
 
-Adds the specified *number* to the adder’s current value and returns the adder.
+将指定的数字加到加法器的当前值上，并返回加法器。
 
 ## *adder*.valueOf() {#adder_valueOf}
 
 ```js
 adder.valueOf() // 42
++adder // 42
+Number(adder) // 42
 ```
 
-Returns the IEEE 754 double-precision representation of the adder’s current value. Most useful as the short-hand notation `+adder`, or when coercing as `Number(adder)`.
+返回加法器当前值的 IEEE 754 双精度表示。在使用简写符号`+adder`或将其强制转换为数字`Number(adder)`时最有用。
 
 ## fsum(*values*, *accessor*) {#fsum}
 
@@ -32,13 +35,26 @@ Returns the IEEE 754 double-precision representation of the adder’s current va
 d3.fsum([0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]) // 1
 ```
 
-[Examples](https://observablehq.com/@d3/d3-fsum) · [Source](https://github.com/d3/d3-array/blob/main/src/fsum.js) · Returns a full-precision summation of the given *values*. Although slower, d3.fsum can replace [d3.sum](./summarize.md#sum) wherever greater precision is needed.
+[示例](https://observablehq.com/@d3/d3-fsum) · [源码](https://github.com/d3/d3-array/blob/main/src/fsum.js) · 返回给定*值* 的完全精度求和。虽然速度较慢，但 d3.fsum 可以替代 [d3.sum](./summarize.md#sum)，适用于需要更高精度的场合。
 
 ```js
+
+const penguins = [
+  {
+    body_mass_g: 1,
+  },
+  {
+    body_mass_g: 2,
+  },
+  {
+    body_mass_g: 1436997,
+  },
+];
+
 d3.fsum(penguins, (d) => d.body_mass_g) // 1437000
 ```
 
-If an *accessor* is specified, invokes the given function for each element in the input *values*, being passed the element `d`, the index `i`, and the array `data` as three arguments; the returned values will then be added.
+如果指定了访问器函数，将对输入 *值* 中的每个元素调用给定的函数，传递元素 `d`，索引 `i` 和数组 `数据` 作为三个参数；然后将返回的值相加。
 
 ## fcumsum(*values*, *accessor*) {#fcumsum}
 
@@ -46,10 +62,28 @@ If an *accessor* is specified, invokes the given function for each element in th
 d3.fcumsum([1, 1e-14, -1]) // [1, 1.00000000000001, 1e-14]
 ```
 
-[Examples](https://observablehq.com/@d3/d3-fcumsum) · [Source](https://github.com/d3/d3-array/blob/main/src/fsum.js) · Returns a full-precision cumulative sum of the given *values* as a Float64Array. Although slower, d3.fcumsum can replace [d3.cumsum](./summarize.md#cumsum) when greater precision is needed.
+[示例](https://observablehq.com/@d3/d3-fcumsum) · [源码](https://github.com/d3/d3-array/blob/main/src/fsum.js) · 返回给定值的完全精度累积和，返回值是一个 Float64Array。虽然速度较慢，但 d3.fcumsum 可以替代 [d3.cumsum](./summarize.md#cumsum)，适用于需要更高精度的场合。
 
 ```js
-d3.fcumsum(penguins, (d) => d.body_mass_g) // [3750, 7550, 10800, 10800, 14250, …]
+const penguins = [
+  {
+    body_mass_g: 3750, // 3750 + 0 = 3750
+  },
+  {
+    body_mass_g: 3750, // 3750 + 3750 = 7550
+  },
+  {
+    body_mass_g: 3300, // 7550 + 3300 = 10800
+  },
+  {
+    body_mass_g: 0,  // 10800 + 0 = 10800
+  },
+  {
+    body_mass_g: 3450,  // 10800 + 3450 = 14250
+  }
+];
+
+d3.fcumsum(penguins, (d) => d.body_mass_g) // [3750, 7550, 10800, 10800, 14250]
 ```
 
-If an *accessor* is specified, invokes the given function for each element in the input *values*, being passed the element `d`, the index `i`, and the array `data` as three arguments; the returned values will then be added.
+如果指定了访问器函数，将对输入值中的每个元素调用给定的函数，传递元素`d`、索引`i`和数组`数据`作为三个参数，然后将返回的值完全精度累积相加。

@@ -290,11 +290,11 @@ export default defineConfig({
         text: "数据 Data",
         items: [
           {
-            text: "d3-array",
+            text: "数组 d3-array",
             link: "/zh-CN/d3-array",
             collapsed: true,
             items: [
-              { text: "Adding numbers", link: "/zh-CN/d3-array/add" },
+              { text: "数值求和 Adding numbers", link: "/zh-CN/d3-array/add" },
               { text: "Binning data", link: "/zh-CN/d3-array/bin" },
               { text: "Bisecting data", link: "/zh-CN/d3-array/bisect" },
               { text: "Blurring data", link: "/zh-CN/d3-array/blur" },
