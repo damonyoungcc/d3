@@ -58,10 +58,12 @@ features:
     details: D3团队还开发了Observable Plot，这是一个基于D3构建的高级API，可以快速创建各种图表。
     link: https://observablehq.com/plot?utm_source=d3js-org&utm_medium=features&utm_campaign=try-observable
     linkText: 尝试 Observable Plot
+    rel: external
   - title: 由 Observable 构建
     details: D3是由Observable开发的，Observable是一个协作数据分析平台。
     link: https://observablehq.com?utm_source=d3js-org&utm_medium=features&utm_campaign=try-observable
     linkText: 访问 Observable
+    rel: external
 ---
 
 <style>
