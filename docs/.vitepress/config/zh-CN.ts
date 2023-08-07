@@ -175,11 +175,11 @@ export default defineConfig({
           { text: "d3-polygon", link: "/zh-CN/d3-polygon" },
           { text: "d3-quadtree", link: "/zh-CN/d3-quadtree" },
           {
-            text: "d3-scale 比例尺",
+            text: "比例尺 d3-scale",
             link: "/zh-CN/d3-scale",
             collapsed: true,
             items: [
-              { text: "Linear scale 线性比例尺", link: "/zh-CN/d3-scale/linear" },
+              { text: "线性比例尺 Linear scale", link: "/zh-CN/d3-scale/linear" },
               { text: "Time scales", link: "/zh-CN/d3-scale/time" },
               { text: "Pow scales", link: "/zh-CN/d3-scale/pow" },
               { text: "Log scales", link: "/zh-CN/d3-scale/log" },
@@ -320,7 +320,7 @@ export default defineConfig({
           { text: "d3-dsv", link: "/zh-CN/d3-dsv" },
           { text: "d3-fetch", link: "/zh-CN/d3-fetch" },
           { text: "d3-format", link: "/zh-CN/d3-format" },
-          { text: "d3-random", link: "/zh-CN/d3-random" },
+          { text: "随机数 d3-random", link: "/zh-CN/d3-random" },
           { text: "d3-time", link: "/zh-CN/d3-time" },
           { text: "d3-time-format", link: "/zh-CN/d3-time-format" },
         ],

@@ -6,9 +6,9 @@ import PlotRender from "../components/PlotRender.js";
 
 </script>
 
-# d3-random
+# 随机数 d3-random
 
-Generate random numbers from various distributions. For seeded random number generation, see [*random*.source](#random_source) and [randomLcg](#randomLcg).
+生成来自不同分布的随机数。对于带有种子的随机数生成，请参考[*random*.source](#random_source)和[randomLcg](#randomLcg)。
 
 ## randomUniform(*min*, *max*) {#randomUniform}
 
