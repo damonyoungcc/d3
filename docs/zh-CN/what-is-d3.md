@@ -31,11 +31,11 @@ function computeTreeWidth(paths) {
 
 </script>
 
-# What is D3?
+# D3是什么 ？
 
 <LogoDiagram />
 
-**D3** (or **D3.js**) is a free, open-source JavaScript library for visualizing data. Its low-level approach built on web standards offers unparalleled flexibility in authoring dynamic, data-driven graphics. For more than a decade D3 has powered groundbreaking and award-winning visualizations, become a foundational building block of higher-level chart libraries, and fostered a vibrant community of data practitioners around the world.
+**D3** (或者 **D3.js**) 是一个免费、开源的 JavaScript 库，用于可视化数据。它采用基于Web标准的底层方法，在编写动态、数据驱动图形方面提供了无与伦比的灵活性。十多年来，D3 一直驱动着开创性和屡获殊荣的可视化项目，成为了构建更高级别图表库的基础模块，并孕育了全球数据从业者充满活力的社区。
 
 D3 “slingshotted the field into growth, diversification and creativity that has been unprecedented” and “changed how millions of data visualizations are created across newsrooms, websites, and personal portfolios,” remarked the Information is Beautiful [2022 Test of Time Award](https://nightingaledvs.com/information-is-beautiful-awards-test-of-time/). The IEEE VIS [2021 Test of Time Award](https://ieeevis.org/year/2021/info/awards/test-of-time-awards) noted, “By creating a framework that was compelling and easy for web developers to use to author interactive visualizations, the authors have undeniably helped to bring data visualization to the mainstream. [D3] is a cornerstone contribution to this conference specifically and more generally to the success of our field as a whole.”
 
