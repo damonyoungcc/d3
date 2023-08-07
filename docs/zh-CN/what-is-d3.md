@@ -31,15 +31,15 @@ function computeTreeWidth(paths) {
 
 </script>
 
-# D3是什么 ？
+# D3 是什么 ？
 
 <LogoDiagram />
 
-**D3** (或者 **D3.js**) 是一个免费、开源的 JavaScript 库，用于可视化数据。它采用基于Web标准的底层方法，在编写动态、数据驱动图形方面提供了无与伦比的灵活性。十多年来，D3 一直驱动着开创性和屡获殊荣的可视化项目，成为了构建更高级别图表库的基础模块，并孕育了全球数据从业者充满活力的社区。
+**D3** (或者 **D3.js**)是一个免费、开源的用于数据可视化的 JavaScript 库。它提供了基于 Web 标准的底层方法，为编写动态、数据驱动的图形提供了无与伦比的灵活性。十多年来， D3 作为基础工具库为其他更高级的图表库和可视化项目提供了支持和基础，并且孕育了一个充满活力的全球数据从业者参与的社区。
 
 D3 “slingshotted the field into growth, diversification and creativity that has been unprecedented” and “changed how millions of data visualizations are created across newsrooms, websites, and personal portfolios,” remarked the Information is Beautiful [2022 Test of Time Award](https://nightingaledvs.com/information-is-beautiful-awards-test-of-time/). The IEEE VIS [2021 Test of Time Award](https://ieeevis.org/year/2021/info/awards/test-of-time-awards) noted, “By creating a framework that was compelling and easy for web developers to use to author interactive visualizations, the authors have undeniably helped to bring data visualization to the mainstream. [D3] is a cornerstone contribution to this conference specifically and more generally to the success of our field as a whole.”
 
-D3 was created by Mike Bostock in 2011. Mike co-authored the [D3 paper](http://vis.stanford.edu/papers/d3) with Jeff Heer and Vadim Ogievetsky at Stanford. Jason Davies made major contributions to D3 from 2011 to 2013, most notably to D3’s geographic projection system. Philippe Rivière has been a major contributor to D3 and its documentation since 2016. Over the years, countless kind individuals have contributed to D3 by sharing code and ideas, by teaching and answering questions, and by bringing people together to further the practice of visualization. Mike and Philippe now maintain D3 and [Observable Plot](https://observablehq.com/plot) at [Observable](https://observablehq.com).
+D3 是由 Mike Bostock 于 2011 年创建的。Mike 与 Jeff Heer 和 Vadim Ogievetsky 在斯坦福大学共同撰写了[D3 论文](http://vis.stanford.edu/papers/d3)。Jason Davies 在 2011 年至 2013 年期间对 D3 做出了重要贡献，尤其是 D3 的地理投影系统。自 2016 年以来，Philippe Rivière 一直是 D3 及其文档的主要贡献者。多年来，无数热心的个人通过分享代码和想法，教学和解答问题，以及组织人们共同推进可视化实践，为 D3 做出了贡献。目前，Mike 和 Philippe 在[Observable](https://observablehq.com) 维护着 D3 和 [Observable Plot](https://observablehq.com/plot)。
 
 ## D3 is a low-level toolbox
 

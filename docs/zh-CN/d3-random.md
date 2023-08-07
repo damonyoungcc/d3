@@ -8,9 +8,9 @@ import PlotRender from "../components/PlotRender.js";
 
 # 随机数 d3-random
 
-生成来自不同分布的随机数。对于带有种子的随机数生成，请参考[*random*.source](#random_source)和[randomLcg](#randomLcg)。
+从各种概率分布中生成随机数。对于带有种子的随机数生成，请参考[_random_.source](#random_source)和[randomLcg](#randomLcg)。
 
-## randomUniform(*min*, *max*) {#randomUniform}
+## randomUniform(_min_, _max_) {#randomUniform}
 
 <PlotRender :options='{
   height: 120,
@@ -21,10 +21,10 @@ import PlotRender from "../components/PlotRender.js";
 }' />
 
 ```js
-d3.randomUniform(6) // generate numbers ≥0 and <6
+d3.randomUniform(6); // 生成的数 ≥0 and <6
 ```
 
-[Examples](https://observablehq.com/@d3/d3-random#uniform) · [Source](https://github.com/d3/d3-random/blob/main/src/uniform.js) · Returns a function for generating random numbers with a [uniform distribution](https://en.wikipedia.org/wiki/Uniform_distribution_\(continuous\)). The minimum allowed value of a returned number is *min* (inclusive), and the maximum is *max* (exclusive). If *min* is not specified, it defaults to 0; if *max* is not specified, it defaults to 1. For example:
+[示例](https://observablehq.com/@d3/d3-random#uniform) · [源码](https://github.com/d3/d3-random/blob/main/src/uniform.js) · 返回一个用于生成符合[均匀分布概率](<https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)>)随机数的函数. 返回的随机数的最小值为 _min_ （包含），最大值为 _max_ （不包含）。 如果未指定 _min_，则默认为 0；如果未指定 _max_，则默认为 1。
 
 ## randomInt(*min*, *max*) {#randomInt}
 
