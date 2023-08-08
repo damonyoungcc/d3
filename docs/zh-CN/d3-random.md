@@ -24,7 +24,7 @@ import PlotRender from "../components/PlotRender.js";
 d3.randomUniform(6); // 生成的数 ≥0 and <6
 ```
 
-[示例](https://observablehq.com/@d3/d3-random#uniform) · [源码](https://github.com/d3/d3-random/blob/main/src/uniform.js) · 返回一个用于生成符合[均匀分布概率](<https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)>)随机数的函数. 返回的随机数的最小值为 _min_ （包含），最大值为 _max_ （不包含）。 如果未指定 _min_，则默认为 0；如果未指定 _max_，则默认为 1。
+[示例](https://observablehq.com/@d3/d3-random#uniform) · [源码](https://github.com/d3/d3-random/blob/main/src/uniform.js) · 返回一个用于生成符合[均匀概率分布](<https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)>)随机数的函数. 返回的随机数的最小值为 *min* （包含），最大值为 *max* （不包含）。 如果未指定 *min* ，则默认为 0；如果未指定 *max*，则默认为 1。
 
 ## randomInt(*min*, *max*) {#randomInt}
 
@@ -37,10 +37,10 @@ d3.randomUniform(6); // 生成的数 ≥0 and <6
 }' />
 
 ```js
-d3.randomInt(100) // generate integers ≥0 and <100
+d3.randomInt(100) // 生成的整数 ≥0 and <6
 ```
 
-[Examples](https://observablehq.com/@d3/d3-random#int) · [Source](https://github.com/d3/d3-random/blob/main/src/int.js) · Returns a function for generating random integers with a [uniform distribution](https://en.wikipedia.org/wiki/Uniform_distribution_\(continuous\)). The minimum allowed value of a returned number is ⌊*min*⌋ (inclusive), and the maximum is ⌊*max* - 1⌋ (inclusive). If *min* is not specified, it defaults to 0. For example:
+[示例](https://observablehq.com/@d3/d3-random#int) · [源码](https://github.com/d3/d3-random/blob/main/src/int.js) · 返回一个用于生成符合[均匀概率分布](https://en.wikipedia.org/wiki/Uniform_distribution_\(continuous\))随机整数的函数。返回的随机整数最小值为 *min* (包含)，最大值为 *max - 1*  (包含)。如果未指定 min，则默认为 0。
 
 ## randomNormal(*mu*, *sigma*) {#randomNormal}
 
@@ -53,10 +53,11 @@ d3.randomInt(100) // generate integers ≥0 and <100
 }' />
 
 ```js
-d3.randomNormal(0, 1) // mean of 0, and standard deviation of 1
+d3.randomNormal(0, 1) // 期望值为0 ， 标准差为1
 ```
 
-[Examples](https://observablehq.com/@d3/d3-random#normal) · [Source](https://github.com/d3/d3-random/blob/main/src/normal.js) · Returns a function for generating random numbers with a [normal (Gaussian) distribution](https://en.wikipedia.org/wiki/Normal_distribution). The expected value of the generated numbers is *mu*, with the given standard deviation *sigma*. If *mu* is not specified, it defaults to 0; if *sigma* is not specified, it defaults to 1.
+[示例](https://observablehq.com/@d3/d3-random#normal) · [源码](https://github.com/d3/d3-random/blob/main/src/normal.js) · 返回一个用于生成符合[正态（高斯）分布](https://en.wikipedia.org/wiki/Normal_distribution)随机数的函数。生成的数的期望值为 *mu*，标准差为给定的 *sigma*。如果未指定 *mu* ，则默认为0；如果未指定 *sigma* ，则默认为1。
+
 
 ## randomLogNormal(*mu*, *sigma*) {#randomLogNormal}
 
@@ -72,7 +73,7 @@ d3.randomNormal(0, 1) // mean of 0, and standard deviation of 1
 d3.randomLogNormal(0, 1)
 ```
 
-[Examples](https://observablehq.com/@d3/d3-random#logNormal) · [Source](https://github.com/d3/d3-random/blob/main/src/logNormal.js) · Returns a function for generating random numbers with a [log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution). The expected value of the random variable’s natural logarithm is *mu*, with the given standard deviation *sigma*. If *mu* is not specified, it defaults to 0; if *sigma* is not specified, it defaults to 1.
+[示例](https://observablehq.com/@d3/d3-random#logNormal) · [源码](https://github.com/d3/d3-random/blob/main/src/logNormal.js) · 返回一个用于生成符合[对数正态分布](https://en.wikipedia.org/wiki/Log-normal_distribution)随机数的函数。生成的随机变量的自然对数的期望值为 *mu*，标准差为给定的 *sigma*。如果未指定 *mu*，则默认为0；如果未指定 *sigma*，则默认为1。
 
 ## randomBates(*n*) {#randomBates}
 
@@ -88,7 +89,7 @@ d3.randomLogNormal(0, 1)
 d3.randomBates(3) // generates numbers between 0 and 1
 ```
 
-[Examples](https://observablehq.com/@d3/d3-random#bates) · [Source](https://github.com/d3/d3-random/blob/main/src/bates.js) · Returns a function for generating random numbers with a [Bates distribution](https://en.wikipedia.org/wiki/Bates_distribution) with *n* independent variables. The case of fractional *n* is handled as with d3.randomIrwinHall, and d3.randomBates(0) is equivalent to d3.randomUniform().
+[示例](https://observablehq.com/@d3/d3-random#bates) · [源码](https://github.com/d3/d3-random/blob/main/src/bates.js) · 返回一个用于生成具有 *n* 个独立变量的[贝茨分布](https://en.wikipedia.org/wiki/Bates_distribution)的随机数的函数，对于分数 *n* 的情况，与 d3.randomIrwinHall 处理方式相同，而d3.randomBates(0)等同于d3.randomUniform()。
 
 ## randomIrwinHall(*n*) {#randomIrwinHall}
 
