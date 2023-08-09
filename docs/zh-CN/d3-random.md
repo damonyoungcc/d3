@@ -105,7 +105,7 @@ d3.randomBates(3) // generates numbers between 0 and 1
 d3.randomIrwinHall(3) // generates numbers between 0 and 3
 ```
 
-[示例](https://observablehq.com/@d3/d3-random#irwinHall) · [源码](https://github.com/d3/d3-random/blob/main/src/irwinHall.js) · Returns a function for generating random numbers with an [Irwin–Hall distribution](https://en.wikipedia.org/wiki/Irwin–Hall_distribution) with *n* independent variables. If the fractional part of *n* is non-zero, this is treated as adding d3.randomUniform() times that fractional part to the integral part.
+[示例](https://observablehq.com/@d3/d3-random#irwinHall) · [源码](https://github.com/d3/d3-random/blob/main/src/irwinHall.js) · 返回一个用于生成符合[Irwin–Hall 分布](https://en.wikipedia.org/wiki/Irwin–Hall_distribution)随机数的函数，该分布具有 *n* 个独立变量。如果 *n* 的小数部分非零，则将其视为将 d3.randomUniform() 乘以该小数部分加到整数部分上。
 
 ## randomExponential(*lambda*) {#randomExponential}
 
@@ -121,7 +121,7 @@ d3.randomIrwinHall(3) // generates numbers between 0 and 3
 d3.randomExponential(1 / 40)
 ```
 
-[Examples](https://observablehq.com/@d3/d3-random#exponential) · [Source](https://github.com/d3/d3-random/blob/main/src/exponential.js) · Returns a function for generating random numbers with an [exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution) with the rate *lambda*; equivalent to time between events in a [Poisson process](https://en.wikipedia.org/wiki/Poisson_point_process) with a mean of 1 / *lambda*. For example, randomExponential(1 / 40) generates random times between events where, on average, one event occurs every 40 units of time.
+[示例](https://observablehq.com/@d3/d3-random#exponential) · [源码](https://github.com/d3/d3-random/blob/main/src/exponential.js) · Returns a function for generating random numbers with an [exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution) with the rate *lambda*; equivalent to time between events in a [Poisson process](https://en.wikipedia.org/wiki/Poisson_point_process) with a mean of 1 / *lambda*. For example, randomExponential(1 / 40) generates random times between events where, on average, one event occurs every 40 units of time.
 
 ## randomPareto(*alpha*) {#randomPareto}
 
