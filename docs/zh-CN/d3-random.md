@@ -105,7 +105,7 @@ d3.randomBates(3) // generates numbers between 0 and 1
 d3.randomIrwinHall(3) // generates numbers between 0 and 3
 ```
 
-[Examples](https://observablehq.com/@d3/d3-random#irwinHall) · [Source](https://github.com/d3/d3-random/blob/main/src/irwinHall.js) · Returns a function for generating random numbers with an [Irwin–Hall distribution](https://en.wikipedia.org/wiki/Irwin–Hall_distribution) with *n* independent variables. If the fractional part of *n* is non-zero, this is treated as adding d3.randomUniform() times that fractional part to the integral part.
+[示例](https://observablehq.com/@d3/d3-random#irwinHall) · [源码](https://github.com/d3/d3-random/blob/main/src/irwinHall.js) · Returns a function for generating random numbers with an [Irwin–Hall distribution](https://en.wikipedia.org/wiki/Irwin–Hall_distribution) with *n* independent variables. If the fractional part of *n* is non-zero, this is treated as adding d3.randomUniform() times that fractional part to the integral part.
 
 ## randomExponential(*lambda*) {#randomExponential}
 
