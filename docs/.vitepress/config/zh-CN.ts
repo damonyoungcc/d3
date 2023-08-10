@@ -218,12 +218,12 @@ export default defineConfig({
             ],
           },
           {
-            text: "d3-selection",
+            text: "选择集 d3-selection",
             link: "/zh-CN/d3-selection",
             collapsed: true,
             items: [
               {
-                text: "Selecting elements",
+                text: "选择元素 Selecting elements",
                 link: "/zh-CN/d3-selection/selecting",
               },
               {
