@@ -2,7 +2,7 @@
 
 import * as d3 from "d3";
 import {shallowRef, onMounted, onUnmounted} from "vue";
-import ExampleAxis from "./components/ExampleAxis.vue";
+import ExampleAxis from "../components/ExampleAxis.vue";
 
 const domain = shallowRef([0, 100]);
 const range = [20, 668];
@@ -23,7 +23,7 @@ onUnmounted(() => {
 
 </script>
 
-# d3-axis
+# 坐标轴 d3-axis
 
 <ExampleAxis :axis="d3.axisBottom(d3.scaleLinear([0, 100], range))" :y="7" />
 
@@ -33,9 +33,9 @@ onUnmounted(() => {
 
 <ExampleAxis :axis="d3.axisBottom(d3.scaleUtc([new Date('2011-01-01'), new Date('2013-01-01')], range))" :y="7" />
 
-The axis component renders human-readable reference marks for position [scales](./d3-scale.md). It works with most scale types, including linear, log, band, and time scales as shown above.
+坐标轴组件会为位置 [比例尺 scales](./d3-scale.md) 呈现人类可读的参考标记。它适用于大多数比例尺类型，包括线性、对数、分段和时间比例尺，如上所示。
 
-Calling the axis component on a [selection](./d3-selection.md) of SVG containers (usually a single G element) populates the axes. Axes are rendered at the origin. To change the position of the axis with respect to the chart, specify a [transform attribute](http://www.w3.org/TR/SVG/coords.html#TransformAttribute) on the containing element.
+在SVG容器的选择上调用坐标轴组件（通常是单个G元素），可以填充坐标轴。坐标轴呈现在原点处。要改变坐标轴相对于图表的位置，请在包含的元素上指定一个 [transform 属性](http://www.w3.org/TR/SVG/coords.html#TransformAttribute)。
 
 ```js
 const gx = svg.append("g")
@@ -43,7 +43,7 @@ const gx = svg.append("g")
     .call(d3.axisBottom(x));
 ```
 
-If the scale has changed, call the axis component a second time to update. For smooth animations, you can call it on a [transition](./d3-transition.md).
+如果比例尺发生了变化，可以再次调用坐标轴组件以进行更新。为了实现平滑的动画效果，可以在过渡 [transition](./d3-transition.md) 中调用它。
 
 <ExampleAxis :axis="d3.axisBottom(d3.scaleLinear(domain, range))" :y="7" :duration="1500" />
 
@@ -53,7 +53,7 @@ gx.transition()
     .call(d3.axisBottom(x));
 ```
 
-The elements created by the axis are considered part of its public API. You can apply external stylesheets or modify the generated axis elements to [customize the axis appearance](https://observablehq.com/@d3/styled-axes). An axis consists of a [path element](https://www.w3.org/TR/SVG/paths.html#PathElement) of class “domain” representing the extent of the scale’s domain, followed by transformed [g elements](https://www.w3.org/TR/SVG/struct.html#Groups) of class “tick” representing each of the scale’s ticks. Each tick has a [line element](https://www.w3.org/TR/SVG/shapes.html#LineElement) to draw the tick line, and a [text element](https://www.w3.org/TR/SVG/text.html#TextElement) for the tick label. For example, here is a typical bottom-oriented axis:
+由坐标轴创建的元素被视为其公共 API 的一部分。你可以应用外部样式表或修改生成的坐标轴元素以 [自定义坐标轴样式](https://observablehq.com/@d3/styled-axes)。一个坐标轴由一个 class 为 “domain” 的 [path 元素](https://www.w3.org/TR/SVG/paths.html#PathElement) 表示刻度范围的域，接着是 class 为 “tick” 的变换后的 [g 元素](https://www.w3.org/TR/SVG/struct.html#Groups) 元素，表示每个刻度。每个刻度都有一个 [line 元素](https://www.w3.org/TR/SVG/shapes.html#LineElement) 元素用于绘制刻度线，以及一个 [text 元素](https://www.w3.org/TR/SVG/text.html#TextElement) 元素用于刻度标签。例如，这是一个典型的底部定向坐标轴：
 
 ```html
 <g fill="none" font-size="10" font-family="sans-serif" text-anchor="middle">
@@ -85,35 +85,35 @@ The elements created by the axis are considered part of its public API. You can 
 </g>
 ```
 
-The orientation of an axis is fixed; to change the orientation, remove the old axis and create a new axis.
+坐标轴的方向是固定的；要更改方向，请删除旧的坐标轴并创建新的坐标轴。
 
 ## axisTop(*scale*) {#axisTop}
 
 <ExampleAxis :axis="d3.axisTop(d3.scaleLinear([0, 100], range))" :y="23" />
 
-[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · Constructs a new top-oriented axis generator for the given [scale](./d3-scale.md), with empty [tick arguments](#axis_ticks), a [tick size](#axis_tickSize) of 6 and [padding](#axis_tickPadding) of 3. In this orientation, ticks are drawn above the horizontal domain path.
+[源码](https://github.com/d3/d3-axis/blob/main/src/axis.js) · 传入一个指定的 [比例尺 scale](./d3-scale.md)，创建一个面向顶部的坐标轴生成器，使用空的 [刻度参数](#axis_ticks)，[刻度大小](#axis_tickSize) 为 6，[内边距](#axis_tickPadding) 为 3。在这种方向上，刻度绘制在水平域路径的上方。
 
 ## axisRight(*scale*) {#axisRight}
 
 <ExampleAxis :axis="d3.axisRight(d3.scaleLinear([0, 100], [10, 190]))" :width="60" :height="200" :x="20" />
 
-[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · Constructs a new right-oriented axis generator for the given [scale](./d3-scale.md), with empty [tick arguments](#axis_ticks), a [tick size](#axis_tickSize) of 6 and [padding](#axis_tickPadding) of 3. In this orientation, ticks are drawn to the right of the vertical domain path.
+[源码](https://github.com/d3/d3-axis/blob/main/src/axis.js) · 传入一个指定的 [比例尺 scale](./d3-scale.md)，创建一个面向右侧的坐标轴生成器，使用空的 [刻度参数](#axis_ticks)，[刻度大小](#axis_tickSize) 为 6，[内边距](#axis_tickPadding) 为 3。在这种方向上，刻度绘制在垂直域路径的右侧。
 
 ## axisBottom(*scale*) {#axisBottom}
 
 <ExampleAxis :axis="d3.axisBottom(d3.scaleLinear([0, 100], range))" :y="7" />
 
-[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · Constructs a new bottom-oriented axis generator for the given [scale](./d3-scale.md), with empty [tick arguments](#axis_ticks), a [tick size](#axis_tickSize) of 6 and [padding](#axis_tickPadding) of 3. In this orientation, ticks are drawn below the horizontal domain path.
+[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · 传入一个指定的 [比例尺 scale](./d3-scale.md)，创建一个面向底部的坐标轴生成器，使用空的 [刻度参数](#axis_ticks)，[刻度大小](#axis_tickSize) 为 6，[内边距](#axis_tickPadding) 为 3。在这种方向上，刻度绘制在垂直域路径的下方。
 
 ## axisLeft(*scale*) {#axisLeft}
 
 <ExampleAxis :axis="d3.axisLeft(d3.scaleLinear([0, 100], [10, 190]))" :width="60" :height="200" :x="40" />
 
-[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · Constructs a new left-oriented axis generator for the given [scale](./d3-scale.md), with empty [tick arguments](#axis_ticks), a [tick size](#axis_tickSize) of 6 and [padding](#axis_tickPadding) of 3. In this orientation, ticks are drawn to the left of the vertical domain path.
+[源码](https://github.com/d3/d3-axis/blob/main/src/axis.js) · 传入一个指定的 [比例尺 scale](./d3-scale.md)，创建一个面向左侧的坐标轴生成器，使用空的 [刻度参数](#axis_ticks)，[刻度大小](#axis_tickSize) 为 6，[内边距](#axis_tickPadding) 为 3。在这种方向上，刻度绘制在垂直域路径的左侧。
 
 ## *axis*(*context*) {#_axis}
 
-[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · Render the axis to the given *context*, which may be either a [selection](./d3-selection.md) of SVG containers (either SVG or G elements) or a corresponding [transition](./d3-transition.md).
+[源码](https://github.com/d3/d3-axis/blob/main/src/axis.js) · 将坐标轴渲染到给定的 *上下文 context* 中，该上下文可以是 SVG 容器的 [选择集 selection](./d3-selection.md) （可以是 SVG 或 G 元素），也可以是相应的 [过渡效果 transition](./d3-transition.md)。
 
 ```js
 svg.append("g")
@@ -123,7 +123,8 @@ svg.append("g")
 
 ## *axis*.scale(*scale*) {#axis_scale}
 
-[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · If *scale* is specified, sets the [scale](./d3-scale.md) and returns the axis. If *scale* is not specified, returns the current scale.
+[源码](https://github.com/d3/d3-axis/blob/main/src/axis.js) · 如果指定了 *比例尺 scale* ，则设置 [比例尺 scale](./d3-scale.md) 并返回坐标轴。如果没有指定 *比例尺 scale*，则返回当前的比例尺。
+
 
 ```js
 const xAxis = d3.axisBottom().scale(x);
@@ -131,15 +132,15 @@ const xAxis = d3.axisBottom().scale(x);
 
 ## *axis*.ticks(...*arguments*) {#axis_ticks}
 
-Sets the *arguments* that will be passed to [*scale*.ticks](./d3-scale/linear.md#linear_ticks) and [*scale*.tickFormat](./d3-scale/linear.md#linear_tickFormat) when the axis is [rendered](#_axis), and returns the axis generator.
+设置在渲染坐标轴时将传递给 [*scale*.ticks](./d3-scale/linear.md#linear_ticks) 和 [*scale*.tickFormat](./d3-scale/linear.md#linear_tickFormat) 的 *参数 arguments* ，并返回坐标轴生成器。
 
-The meaning of the *arguments* depends on the [axis’ scale](#axis_scale) type: most commonly, the arguments are a suggested *count* for the number of ticks (or a [time *interval*](./d3-time.md) for time scales), and an optional [format *specifier*](./d3-format.md) to customize how the tick values are formatted. For example, to generate twenty ticks with SI-prefix formatting on a linear scale, say:
+*参数 arguments* 的含义取决于 [坐标轴的比例尺 axis’ scale](#axis_scale) 类型：通常，这些参数是用于刻度数量的建议 *计数 count* （或用于时间比例尺的 [时间间隔 time *interval*](./d3-time.md) ），以及一个可选的格式说明符，用于自定义刻度值的格式。例如，要在线性比例尺上生成二十个带有 SI 前缀格式的刻度，可以这样设置：
 
 ```js
 axis.ticks(20, "s");
 ```
 
-To generate ticks every fifteen minutes with a time scale, say:
+要使用时间比例尺设置刻度间隔为 15 分钟，可以这样设置：
 
 ```js
 axis.ticks(d3.timeMinute.every(15));

@@ -62,7 +62,7 @@ export default defineConfig({
       {
         text: "可视化 Visualization",
         items: [
-          { text: "d3-axis", link: "/zh-CN/d3-axis" },
+          { text: "坐标轴 d3-axis", link: "/zh-CN/d3-axis" },
           {
             text: "d3-chord",
             link: "/zh-CN/d3-chord",
