@@ -146,37 +146,37 @@ axis.ticks(20, "s");
 axis.ticks(d3.timeMinute.every(15));
 ```
 
-This method is a convenience function for [*axis*.tickArguments](#axis_tickArguments). For example, this:
+这是一个方便用于设置 [坐标轴刻度参数 *axis*.tickArguments](#axis_tickArguments) 的函数。例如，下面这段代码：
 
 ```js
 axis.ticks(10);
 ```
 
-Is equivalent to:
+等同于：
 
 ```js
 axis.tickArguments([10]);
 ```
 
-This method has no effect if the scale does not implement *scale*.ticks, as with [band](./d3-scale/band.md) and [point](./d3-scale/point.md) scales. To set the tick values explicitly, use [*axis*.tickValues](#axis_tickValues). To set the tick format explicitly, use [*axis*.tickFormat](#axis_tickFormat). To generate tick values directly, use [*scale*.ticks](./d3-scale/linear.md#linear_ticks).
+如果比例尺未实现 *scale*.ticks，例如带有 [band](./d3-scale/band.md) 和 [point](./d3-scale/point.md) 比例尺，该方法将不产生任何效果。要显式设置刻度值，请使用 [*axis*.tickValues](#axis_tickValues)。要显式设置刻度格式，请使用 [*axis*.tickFormat](#axis_tickFormat)。要直接生成刻度值，请使用 [*scale*.ticks](./d3-scale/linear.md#linear_ticks)。
 
 ## *axis*.tickArguments(*arguments*) {#axis_tickArguments}
 
-[Source](https://github.com/d3/d3-axis/blob/main/src/axis.js) · If *arguments* is specified, sets the *arguments* that will be passed to [*scale*.ticks](./d3-scale/linear.md#linear_ticks) and [*scale*.tickFormat](./d3-scale/linear.md#linear_tickFormat) when the axis is [rendered](#_axis), and returns the axis generator. See also [*axis*.ticks](#axis_ticks), which is used more commonly.
+[源码](https://github.com/d3/d3-axis/blob/main/src/axis.js) · 如果指定了 *参数 arguments*，则在绘制轴时会设置这些 *参数 arguments* ，这些参数将传递给 [*scale*.ticks](./d3-scale/linear.md#linear_ticks) 和 [*scale*.tickFormat](./d3-scale/linear.md#linear_tickFormat)。函数会返回轴生成器。更常见的做法是使用 [*axis*.ticks](#axis_ticks)。
 
-The meaning of the *arguments* depends on the [axis’ scale](#axis_scale) type: most commonly, the arguments are a suggested *count* for the number of ticks (or a [time *interval*](./d3-time.md) for time scales), and an optional [format *specifier*](./d3-format.md) to customize how the tick values are formatted. For example, to generate twenty ticks with SI-prefix formatting on a linear scale, say:
+*参数 arguments* 的含义取决于轴的 [比例尺类型 axis’ scale](#axis_scale)：最常见的情况是，这些参数是刻度的建议 *数量 count* （或时间刻度的 [时间间隔 time *interval*](./d3-time.md)），以及可选的格式说明符，用于自定义刻度值的格式。例如，要在线性比例尺上生成带有 SI 前缀格式的二十个刻度，可以这样说：
 
 ```js
 axis.tickArguments([20, "s"]);
 ```
 
-To generate ticks every fifteen minutes with a time scale, say:
+要在时间比例尺上每隔十五分钟生成刻度，可以这样说：
 
 ```js
 axis.tickArguments([d3.timeMinute.every(15)]);
 ```
 
-If *arguments* is not specified, returns the current tick arguments, which defaults to the empty array. If *arguments* is specified, this method has no effect if the scale does not implement *scale*.ticks, as with [band](./d3-scale/band.md) and [point](./d3-scale/point.md) scales. To set the tick values explicitly, use [*axis*.tickValues](#axis_tickValues). To set the tick format explicitly, use [*axis*.tickFormat](#axis_tickFormat).
+如果未指定 *参数 arguments*，则返回当前刻度参数，默认为空数组。如果指定了参数 *参数 arguments*，并且比例尺未实现 *scale*.ticks（例如带有 [band](./d3-scale/band.md) 和 [point](./d3-scale/point.md) 比例尺），则该方法不会产生任何效果。要显式设置刻度值，请使用 [*axis*.tickValues](#axis_tickValues)。要显式设置刻度格式，请使用 [*axis*.tickFormat](#axis_tickFormat)。
 
 ## *axis*.tickValues(*values*) {#axis_tickValues}
 
