@@ -20,7 +20,7 @@ d3.scaleLinear(["red", "blue"]) // default domain of [0, 1]
 
 ## *linear*(*value*) {#_linear}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · Given a *value* from the [domain](#linear_domain), returns the corresponding value from the [range](#linear_range). For example, to apply a position encoding:
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 给定一个来自 [域 domain](#linear_domain) 的 *值 value*，返回相应的 [范围 range](#linear_range) 内的值。例如，要应用位置编码：
 
 ```js
 const x = d3.scaleLinear([10, 130], [0, 960]);
@@ -28,7 +28,7 @@ x(20); // 80
 x(50); // 320
 ```
 
-To apply a color encoding:
+要应用颜色编码：
 
 ```js
 const color = d3.scaleLinear([10, 100], ["brown", "steelblue"]);
@@ -36,11 +36,11 @@ color(20); // "rgb(154, 52, 57)"
 color(50); // "rgb(123, 81, 103)"
 ```
 
-If the given *value* is outside the domain, and [clamping](#linear_clamp) is not enabled, the mapping will be extrapolated such that the returned value is outside the range.
+如果给定的 *值 value* 超出了定义域，并且未启用 (在范围之外的值被强制限制在范围内 [clamping](#linear_clamp))，则映射将进行外推，使得返回的值在范围之外。
 
 ## *linear*.invert(*value*) {#linear_invert}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · Given a *value* from the [range](#linear_range), returns the corresponding value from the [domain](#linear_domain). Inversion is useful for interaction, say to determine the data value corresponding to the position of the mouse. For example, to invert a position encoding:
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 给定一个 [范围 range](#linear_range) 内的 *值 value* ，返回对应的 [域 domain](#linear_domain) 内的值。反转在交互中很有用，比如可以用来确定与鼠标位置相对应的数据值。例如，反转一个位置编码：
 
 ```js
 const x = d3.scaleLinear([10, 130], [0, 960]);
@@ -48,21 +48,21 @@ x.invert(80); // 20
 x.invert(320); // 50
 ```
 
-If the given *value* is outside the range, and [clamping](#linear_clamp) is not enabled, the mapping may be extrapolated such that the returned value is outside the domain. This method is only supported if the range is numeric. If the range is not numeric, returns NaN.
+如果给定的 *值 value* 超出了范围，并且未启用 (在范围之外的值被强制限制在范围内 [clamping](#linear_clamp))，则映射可能被外推，以致返回的值超出了域。这种方法仅在范围为数字时支持。如果范围不是数字，则返回 NaN。
 
-For a valid value *y* in the range, <i>linear</i>(<i>linear</i>.invert(<i>y</i>)) approximately equals *y*; similarly, for a valid value *x* in the domain, <i>linear</i>.invert(<i>linear</i>(<i>x</i>)) approximately equals *x*. The scale and its inverse may not be exact due to the limitations of floating point precision.
+对于范围内的有效值 *y*，<i>linear</i>(<i>linear</i>.invert(<i>y</i>)) 大致等于 *y*；类似地，对于域内的有效值 *x*，<i>linear</i>.invert(<i>linear</i>(<i>x</i>))大致等于 *x*。由于浮点精度的限制，缩放和其逆可能并不完全准确。
 
 ## *linear*.domain(*domain*) {#linear_domain}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · If *domain* is specified, sets the scale’s domain to the specified array of numbers and returns this scale.
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 如果指定了 *域 domain* ，则将比例尺的域设置为指定的数字数组，并返回该比例尺。
 
 ```js
 const x = d3.scaleLinear().domain([10, 130]);
 ```
 
-The array must contain two or more elements. If the elements in the given array are not numbers, they will be coerced to numbers.
+数组必须包含两个或更多元素。如果给定数组中的元素不是数字，则它们将被强制转换为数字。
 
-Although continuous scales typically have two values each in their domain and range, specifying more than two values produces a piecewise scale. For example, to create a [diverging color scale](./diverging.md) that interpolates between white and red for negative values, and white and green for positive values, say:
+尽管连续比例尺的域和范围通常各自有两个值，但指定多于两个值会产生一个分段比例尺。例如，要创建一个分散的颜色比例尺 [diverging color scale](./diverging.md)，用于在负值时在白色和红色之间进行插值，在正值时在白色和绿色之间进行插值，可以这样说：
 
 ```js
 const color = d3.scaleLinear([-1, 0, 1], ["red", "white", "green"]);
@@ -70,9 +70,9 @@ color(-0.5); // "rgb(255, 128, 128)"
 color(+0.5); // "rgb(128, 192, 128)"
 ```
 
-Internally, a piecewise scale performs a [binary search](../d3-array/bisect.md) for the range interpolator corresponding to the given domain value. Thus, the domain must be in ascending or descending order. If the domain and range have different lengths *N* and *M*, only the first *min(N,M)* elements in each are observed.
+在内部，分段比例尺对给定的域值执行二分搜索 [binary search](../d3-array/bisect.md)，以找到对应的范围插值器。因此，域必须按升序或降序排列。如果域和范围的长度不同，分别为 *N* 和 *M*，那么只观察每个中的前 *min(N,M)* 个元素。
 
-If *domain* is not specified, returns a copy of the scale’s current domain.
+如果未指定域，将返回比例尺当前域的副本。
 
 ```js
 color.domain() // [-1, 0, 1]
@@ -80,47 +80,47 @@ color.domain() // [-1, 0, 1]
 
 ## *linear*.range(range) {#linear_range}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · If *range* is specified, sets the scale’s range to the specified array of values and returns this scale.
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 如果指定了 *range*，将比例尺的范围设置为指定的值数组，并返回该比例尺。
 
 ```js
 const x = d3.scaleLinear().range([0, 960]);
 ```
 
-The array must contain two or more elements. Unlike the [domain](#linear_domain), elements in the given array need not be numbers; any value that is supported by the underlying [interpolator](#linear_interpolate) will work, though note that numeric ranges are required for [invert](#linear_invert).
+该数组必须包含两个或更多的元素。与域 [domain](#linear_domain) 不同，给定数组中的元素不必是数字；任何受底层插值器 [interpolator](#linear_interpolate) 支持的值都可以使用，尽管需要注意反转 [invert](#linear_invert) 时需要使用数值范围。
 
-If *range* is not specified, returns a copy of the scale’s current range.
+如果未指定范围 *range*，则返回比例尺当前范围的副本。
 
 ```js
 x.range() // [0, 960]
 ```
 
-See [*linear*.interpolate](#linear_interpolate) for more examples.
+请参阅 [*linear*.interpolate](#linear_interpolate) 获取更多示例。
 
 ## *linear*.rangeRound(*range*) {#linear_rangeRound}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · Sets the scale’s [*range*](#linear_range) to the specified array of values while also setting the scale’s [interpolator](#linear_interpolate) to [interpolateRound](../d3-interpolate/value.md#interpolateRound); returns this scale.
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 将比例尺的范围 [*range*](#linear_range) 设置为指定的值数组，同时将比例尺的插值器 [interpolator](#linear_interpolate) 设置为 [interpolateRound](../d3-interpolate/value.md#interpolateRound) 返回此比例尺。
 
 ```js
 const x = d3.scaleLinear().rangeRound([0, 960]);
 ```
 
-This is a convenience method equivalent to:
+这是一个等同于以下操作的便捷方法：
 
 ```js
 linear.range(range).interpolate(d3.interpolateRound)
 ```
 
-The rounding interpolator is sometimes useful for avoiding antialiasing artifacts, though also consider the [shape-rendering](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shape-rendering) “crispEdges” styles. Note that this interpolator can only be used with numeric ranges.
+舍入插值器有时用于避免抗锯齿伪影，但也要考虑 [shape-rendering](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shape-rendering) 的“crispEdges”样式。请注意，此插值器只能用于数值范围。
 
 ## *linear*.clamp(*clamp*) {#linear_clamp}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · If *clamp* is specified, enables or disables clamping accordingly; returns this scale.
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 如果指定了 *clamp*，根据指定的值启用或禁用 clamping；返回此比例尺。
 
 ```js
 const x = d3.scaleLinear([0, 960]).clamp(true);
 ```
 
-If clamping is disabled and the scale is passed a value outside the [domain](#linear_domain), the scale may return a value outside the [range](#linear_range) through extrapolation. If clamping is enabled, the return value of the scale is always within the scale’s range. Clamping similarly applies to [*linear*.invert](#linear_invert). For example:
+如果禁用了 clamping，并且比例尺被传递一个超出域 [domain](#linear_domain) 范围的值，比例尺可能通过外推返回一个超出 [range](#linear_range) 的值。如果启用了 clamping，则比例尺的返回值始终在比例尺的范围内。Clamping 同样适用于 [*linear*.invert](#linear_invert)。例如：
 
 ```js
 const x = d3.scaleLinear([10, 130], [0, 960]); // clamping disabled by default
@@ -131,7 +131,7 @@ x(-10); // 0, clamped to range
 x.invert(-160); // 10, clamped to domain
 ```
 
-If *clamp* is not specified, returns whether or not the scale currently clamps values to within the range.
+如果未指定 *clamp*，则返回比例尺当前是否将值夹在范围内。
 
 ```js
 x.clamp() // true, perhaps
@@ -139,14 +139,14 @@ x.clamp() // true, perhaps
 
 ## *linear*.unknown(*value*) {#linear_unknown}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · If *value* is specified, sets the output value of the scale for undefined or NaN input values and returns this scale. This is useful for specifying how missing or invalid data is displayed.
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 如果指定了 *value*，则设置比例尺对于未定义或 NaN 输入值的输出值，并返回该比例尺。这对于指定如何显示丢失或无效数据非常有用。
 
 ```js
 const color = d3.scaleLinear([0, 100], ["red", "blue"]).unknown("#ccc");
 color(NaN); // "#ccc"
 ```
 
-If *value* is not specified, returns the current unknown value, which defaults to undefined.
+如果未指定 *value*，则返回当前的未知值，其默认值为 undefined。
 
 ```js
 color.unknown() // "#ccc"
@@ -154,28 +154,28 @@ color.unknown() // "#ccc"
 
 ## *linear*.interpolate(*interpolate*) {#linear_interpolate}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · If *interpolate* is specified, sets the scale’s [range](#linear_range) interpolator factory.
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 如果指定了 *interpolate*，则设置比例尺的范围 [range](#linear_range) 插值器工厂。
 
 ```js
 const color = d3.scaleLinear(["red", "blue"]).interpolate(d3.interpolateHcl);
 ```
 
-The scale’s interpolator factory is used to create interpolators for each adjacent pair of values from the range; these interpolators then map a normalized domain parameter *t* in [0, 1] to the corresponding value in the range. If *factory* is not specified, returns the scale’s current interpolator factory, which defaults to [d3.interpolate](../d3-interpolate/value.md#interpolate). See [d3-interpolate](../d3-interpolate.md) for more interpolators.
+比例尺的插值器工厂用于为范围中的每一对相邻值创建插值器；这些插值器将规范化的域参数 *t* （在 [0, 1] 内）映射到范围中的相应值。如果未指定 factory，则返回比例尺当前的插值器工厂，默认为 [d3.interpolate](../d3-interpolate/value.md#interpolate)。请参阅 [d3-interpolate](../d3-interpolate.md) 获取更多插值器。
 
-For example, consider a diverging color scale with three colors in the range:
+例如，考虑一个范围中有三种颜色的分散色标尺：
 
 ```js
 const color = d3.scaleLinear([-100, 0, +100], ["red", "white", "green"]);
 ```
 
-Two interpolators are created internally by the scale, equivalent to:
+比例尺内部会创建两个插值器，相当于：
 
 ```js
 const i0 = d3.interpolate("red", "white");
 const i1 = d3.interpolate("white", "green");
 ```
 
-A common reason to specify a custom interpolator is to change the color space of interpolation. For example, to use [HCL](../d3-interpolate/color.md#interpolateHcl):
+指定自定义插值器的常见原因是改变插值的颜色空间。例如，使用 [HCL](../d3-interpolate/color.md#interpolateHcl)：
 
 ```js
 const color = d3.scaleLinear()
@@ -184,7 +184,7 @@ const color = d3.scaleLinear()
     .interpolate(d3.interpolateHcl);
 ```
 
-Or for [Cubehelix](../d3-interpolate/color.md#interpolateCubehelix) with a custom gamma:
+或者使用自定义伽马值的 [Cubehelix](../d3-interpolate/color.md#interpolateCubehelix) 插值器：
 
 ```js
 const color = d3.scaleLinear()
@@ -193,24 +193,24 @@ const color = d3.scaleLinear()
     .interpolate(d3.interpolateCubehelix.gamma(3));
 ```
 
-:::warning CAUTION
-The [default interpolator](../d3-interpolate/value.md#interpolate) **may reuse return values**. For example, if the range values are objects, then the value interpolator always returns the same object, modifying it in-place. If the scale is used to set an attribute or style, this is typically acceptable (and desirable for performance); however, if you need to store the scale’s return value, you must specify your own interpolator or make a copy as appropriate.
+:::warning 注意
+默认的插值器 [default interpolator](../d3-interpolate/value.md#interpolate) **可能会重复使用返回值**。例如，如果范围值是对象，那么值插值器始终返回相同的对象，并在这个对象上直接修改。如果该比例尺用于设置属性或样式，这通常是可以接受的（对于性能来说也是理想的）；然而，如果您需要存储比例尺的返回值，您必须指定自己的插值器或适当地进行复制。
 :::
 
 ## *linear*.ticks(*count*) {#linear_ticks}
 
-[Examples](https://observablehq.com/@d3/scale-ticks) · [Source](https://github.com/d3/d3-scale/blob/main/src/linear.js) · Returns approximately *count* representative values from the scale’s [domain](#linear_domain).
+[示例](https://observablehq.com/@d3/scale-ticks) · [源码](https://github.com/d3/d3-scale/blob/main/src/linear.js) · 从比例尺的域 [domain](#linear_domain) 中返回大约 *count* 个代表性值。
 
 ```js
 const x = d3.scaleLinear([10, 100], ["red", "blue"]);
 x.ticks(); // [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 ```
 
-If *count* is not specified, it defaults to 10. The returned tick values are uniformly spaced, have human-readable values (such as multiples of powers of 10), and are guaranteed to be within the extent of the domain. Ticks are often used to display reference lines, or tick marks, in conjunction with the visualized data. The specified *count* is only a hint; the scale may return more or fewer values depending on the domain. See also d3-array’s [ticks](../d3-array/ticks.md).
+如果未指定 *count*，它默认为 10。返回的刻度值均匀分布，具有人类可读的值（如 10 的幂的倍数），并且保证在域的范围内。刻度经常用于与可视化数据一起显示参考线或刻度标记。指定的 *count* 只是一个提示；刻度尺可能根据域返回更多或更少的值。另请参阅 d3-array 的 [ticks](../d3-array/ticks.md)。
 
 ## *linear*.tickFormat(*count*, *specifier*) {#linear_tickFormat}
 
-[Examples](https://observablehq.com/@d3/scale-ticks) · [Source](https://github.com/d3/d3-scale/blob/main/src/tickFormat.js) · Returns a [number format](../d3-format.md) function suitable for displaying a tick value, automatically computing the appropriate precision based on the fixed interval between tick values. The specified *count* should have the same value as the count that is used to generate the [tick values](#linear_ticks).
+[示例](https://observablehq.com/@d3/scale-ticks) · [源码](https://github.com/d3/d3-scale/blob/main/src/tickFormat.js) · 返回适合显示刻度值的数字格式 [number format](../d3-format.md) 函数，自动计算基于刻度值之间的固定间隔的适当精度。指定的 *count* 应该与用于生成刻度值 [tick values](#linear_ticks) 的 *count* 具有相同的值。
 
 ```js
 const x = d3.scaleLinear([0.1, 1], ["red", "blue"]);
@@ -219,7 +219,7 @@ f(0.1); // "0.1"
 f(1); // "1.0"
 ```
 
-An optional *specifier* allows a [custom format](../d3-format.md#locale_format) where the precision of the format is automatically set by the scale as appropriate for the tick interval. For example, to format percentage change, you might say:
+可选的格式说明符 *specifier* 允许使用自定义格式 [custom format](../d3-format.md#locale_format)，其中格式的精度由比例尺自动设置，以适应刻度间隔。例如，要格式化百分比变化，您可以这样写：
 
 ```js
 const x = d3.scaleLinear([-1, 1], [0, 960]);
@@ -228,79 +228,81 @@ const f = x.tickFormat(5, "+%");
 T.map(f); // ["−100%", "−50%", "+0%", "+50%", "+100%"]
 ```
 
-If *specifier* uses the format type `s`, the scale will return a [SI-prefix format](../d3-format.md#locale_formatPrefix) based on the largest value in the domain. If the *specifier* already specifies a precision, this method is equivalent to [*locale*.format](../d3-format.md#locale_format).
+如果格式说明符 *specifier* 使用格式类型 `s`，则比例尺将根据域中的最大值返回一个SI前缀格式 [SI-prefix format](../d3-format.md#locale_formatPrefix)。如果格式说明符 *specifier* 已经指定了精度，则此方法等效于 [*locale*.format](../d3-format.md#locale_format)。
 
-See also [d3.tickFormat](#tickFormat).
+另请参阅 [d3.tickFormat](#tickFormat)。
 
 ## *linear*.nice(count) {#linear_nice}
 
-[Examples](https://observablehq.com/@d3/d3-scalelinear) · [Source](https://github.com/d3/d3-scale/blob/main/src/nice.js) · Extends the [domain](#linear_domain) so that it starts and ends on nice round values.
+[示例](https://observablehq.com/@d3/d3-scalelinear) · [源码](https://github.com/d3/d3-scale/blob/main/src/nice.js) · 扩展域 [domain](#linear_domain)，使其以整数值开始和结束。
 
 ```js
 const x = d3.scaleLinear([0.241079, 0.969679], [0, 960]).nice();
 x.domain(); // [0.2, 1]
 ```
 
-This method typically modifies the scale’s domain, and may only extend the bounds to the nearest round value. Nicing is useful if the domain is computed from data, say using [extent](../d3-array/summarize.md#extent), and may be irregular. If the domain has more than two values, nicing the domain only affects the first and last value.
+这种方法通常会修改刻度的域，可能只会将边界扩展到最近的整数值。如果域是根据数据计算得出的，比如使用 [extent](../d3-array/summarize.md#extent) 方法，且可能是不规则的，那么使用 nicing 是很有用的。如果域有多于两个值，nicing 方法只会影响第一个和最后一个值。
 
-An optional tick *count* argument allows greater control over the step size used to extend the bounds, guaranteeing that the returned [ticks](#linear_ticks) will exactly cover the domain.
+可选的刻度数量 *count* 参数可以更好地控制用于扩展边界的步长，确保返回的刻度 [ticks](#linear_ticks) 完全覆盖了域。
 
 ```js
 const x = d3.scaleLinear([0.241079, 0.969679], [0, 960]).nice(40);
 x.domain(); // [0.24, 0.98]
 ```
 
-Nicing a scale only modifies the current domain; it does not automatically nice domains that are subsequently set using [*linear*.domain](#linear_domain). You must re-nice the scale after setting the new domain, if desired.
+使用 nicing 方法只会修改当前的域 domain，它不会自动对后续使用 [*linear*.domain](#linear_domain) 设置的域进行 nicing。如果希望在设置新域后，您必须重新应用 nicing 方法来对刻度进行重新调整。
 
 ## *linear*.copy() {#linear_copy}
 
-[Examples](https://observablehq.com/@d3/continuous-scales) · [Source](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · Returns an exact copy of this scale.
+[示例](https://observablehq.com/@d3/continuous-scales) · [源码](https://github.com/d3/d3-scale/blob/main/src/continuous.js) · 返回比例尺的拷贝。
 
 ```js
 const x1 = d3.scaleLinear([0, 100], ["red", "blue"]);
 const x2 = x1.copy();
 ```
 
-Changes to this scale will not affect the returned scale, and vice versa.
+对此比例尺的更改不会影响返回的比例尺，反之亦然。
 
 ## tickFormat(*start*, *stop*, *count*, *specifier*) {#tickFormat}
 
-[Examples](https://observablehq.com/@d3/scale-ticks) · [Source](https://github.com/d3/d3-scale/blob/main/src/tickFormat.js) · Returns a [number format](../d3-format.md) function suitable for displaying a tick value, automatically computing the appropriate precision based on the fixed interval between tick values, as determined by [d3.tickStep](../d3-array/ticks.md#tickStep).
+[示例](https://observablehq.com/@d3/scale-ticks) · [源码](https://github.com/d3/d3-scale/blob/main/src/tickFormat.js) · 返回一个适合显示刻度值的数字格式 [number format](../d3-format.md) 函数，根据刻度值之间的固定间隔自动计算适当的精度，由 [d3.tickStep](../d3-array/ticks.md#tickStep) 确定。
+
 
 ```js
 const f = d3.tickFormat(0, 1, 20);
 f(1); // "1.00"
 ```
 
-An optional *specifier* allows a [custom format](../d3-format.md#locale_format) where the precision of the format is automatically set by the scale as appropriate for the tick interval. For example, to format percentage change, you might say:
+一个可选的格式说明符 *specifier* 允许自定义格式 [custom format](../d3-format.md#locale_format)，其中格式的精度由比例尺根据刻度间隔自动设置。例如，要格式化百分比变化，您可以这样说：
 
 ```js
 const f = d3.tickFormat(-1, 1, 5, "+%");
 f(-0.5); // "-50%"
 ```
 
-If *specifier* uses the format type `s`, the scale will return a [SI-prefix format](../d3-format.md#locale_formatPrefix) based on the larger absolute value of *start* and *stop*. If the *specifier* already specifies a precision, this method is equivalent to [*locale*.format](../d3-format.md#locale_format).
+如果格式说明符 *specifier* 使用格式类型 `s`，则比例尺将基于 *开始* 和 *结束* 值的较大绝对值返回一个SI前缀格式 [SI-prefix format](../d3-format.md#locale_formatPrefix)。如果格式说明符 *specifier* 已经指定了精度，则此方法相当于 [*locale*.format](../d3-format.md#locale_format)。
 
 ## scaleIdentity(*range*) {#scaleIdentity}
 
-[Examples](https://observablehq.com/@d3/d3-scalelinear) · [Source](https://github.com/d3/d3-scale/blob/main/src/identity.js) · Constructs a new identity scale with the specified [range](#linear_range) (and by extension, [domain](#linear_domain)).
+[示例](https://observablehq.com/@d3/d3-scalelinear) · [源码](https://github.com/d3/d3-scale/blob/main/src/identity.js) · 使用指定的范围 [range](#linear_range)（以及由此推导出的域 [domain](#linear_domain)）构建一个新的恒等比例尺。
+
 
 ```js
 const x = d3.scaleIdentity([0, 960]);
 ```
 
-Identity scales are a special case of [linear scales](#linear-scales) where the domain and range are identical; the scale and its invert method are thus the identity function. These scales are occasionally useful when working with pixel coordinates, say in conjunction with an axis. Identity scales do not support [rangeRound](#linear_rangeRound), [clamp](#linear_clamp) or [interpolate](#linear_interpolate).
+恒等比例尺是线性比例尺 [linear scales](#linear-scales) 的一种特殊情况，其中域和范围是相同的；因此，比例尺及其反转方法是恒等函数。在处理像素坐标时，这些比例尺偶尔会很有用，例如与轴一起使用。恒等比例尺不支持 [rangeRound](#linear_rangeRound)、 [clamp](#linear_clamp) 或 [interpolate](#linear_interpolate)。
 
-If *range* is not specified, it defaults to [0, 1].
+如果未指定范围 *range*，则默认为[0, 1]。
 
 ## scaleRadial(*domain*, *range*) {#scaleRadial}
 
-[Examples](https://observablehq.com/@d3/radial-stacked-bar-chart) · [Source](https://github.com/d3/d3-scale/blob/main/src/radial.js) · Constructs a new radial scale with the specified [domain](#linear_domain) and [range](#linear_range).
+[示例](https://observablehq.com/@d3/radial-stacked-bar-chart) · [源码](https://github.com/d3/d3-scale/blob/main/src/radial.js) · 使用指定的域 [domain](#linear_domain) 和范围 [range](#linear_range) 构建一个新的径向比例尺。
 
 ```js
 const r = d3.scaleRadial([100, 200], [0, 480]);
 ```
 
-Radial scales are a variant of [linear scales](#linear-scales) where the range is internally squared so that an input value corresponds linearly to the squared output value. These scales are useful when you want the input value to correspond to the area of a graphical mark and the mark is specified by radius, as in a radial bar chart. Radial scales do not support [interpolate](#linear_interpolate).
+径向比例尺是线性比例尺 [linear scales](#linear-scales) 的一种变体，其中范围在内部进行了平方处理，使得输入值与平方的输出值线性对应。当您希望输入值对应于图形标记的面积，而且标记是由半径指定的（例如径向条形图）时，这些比例尺非常有用。径向比例尺不支持插值 [interpolate](#linear_interpolate)。
 
-If *domain* or *range* is not specified, each defaults to [0, 1].
+如果未指定域 *domain* 或范围 *range*，则每个默认为 [0, 1]。
