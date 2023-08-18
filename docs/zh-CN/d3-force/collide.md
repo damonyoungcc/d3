@@ -1,6 +1,6 @@
 <script setup>
 
-import ExampleCollideForce from "../components/ExampleCollideForce.vue";
+import ExampleCollideForce from "../../components/ExampleCollideForce.vue";
 
 </script>
 

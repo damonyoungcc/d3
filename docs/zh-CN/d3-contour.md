@@ -1,8 +1,8 @@
 <script setup>
 
 import * as Plot from "@observablehq/plot";
-import {data as volcano} from "./data/volcano.data.js";
-import PlotRender from "./components/PlotRender.js";
+import {data as volcano} from "../data/volcano.data.js";
+import PlotRender from "../components/PlotRender.js";
 
 </script>
 

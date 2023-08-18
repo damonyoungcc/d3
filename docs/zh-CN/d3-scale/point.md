@@ -3,7 +3,7 @@
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import {ref} from "vue";
-import PlotRender from "../components/PlotRender.js";
+import PlotRender from "../../components/PlotRender.js";
 
 const domain = ref("a,b,c,d,e,f");
 const padding = ref(0.1);

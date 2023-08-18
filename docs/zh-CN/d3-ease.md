@@ -2,7 +2,7 @@
 
 import * as d3 from "d3";
 import {ref} from "vue";
-import ExampleEase from "./components/ExampleEase.vue";
+import ExampleEase from "../components/ExampleEase.vue";
 
 const amplitude = ref(1);
 const exponent = ref(2);

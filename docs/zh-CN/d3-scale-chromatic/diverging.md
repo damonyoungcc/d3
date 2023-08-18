@@ -1,8 +1,8 @@
 <script setup>
 
 import * as d3 from "d3";
-import ColorRamp from "../components/ColorRamp.vue";
-import ColorSwatches from "../components/ColorSwatches.vue";
+import ColorRamp from "../../components/ColorRamp.vue";
+import ColorSwatches from "../../components/ColorSwatches.vue";
 
 </script>
 

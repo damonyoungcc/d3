@@ -3,7 +3,7 @@
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import {shallowRef} from "vue";
-import PlotRender from "./components/PlotRender.js";
+import PlotRender from "../components/PlotRender.js";
 
 const random = d3.randomNormal.source(d3.randomLcg(42))();
 const points = Array.from({length: 1000}, () => [random(), random()]);

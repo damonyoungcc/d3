@@ -1,7 +1,7 @@
 <script setup>
 
 import {ref} from "vue";
-import ExampleCurve from "../components/ExampleCurve.vue";
+import ExampleCurve from "../../components/ExampleCurve.vue";
 
 const alpha = ref(0.5);
 const beta = ref(0.85);

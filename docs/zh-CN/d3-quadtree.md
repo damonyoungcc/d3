@@ -3,10 +3,10 @@
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import {computed, shallowRef, onMounted} from "vue";
-import ExampleAnimatedQuadtree from "./components/ExampleAnimatedQuadtree.vue";
-import PlotRender from "./components/PlotRender.js";
-import quadtree_findVisited from "./components/quadtreeFindVisited.js";
-import quadtree_nodes from "./components/quadtreeNodes.js";
+import ExampleAnimatedQuadtree from "../components/ExampleAnimatedQuadtree.vue";
+import PlotRender from "../components/PlotRender.js";
+import quadtree_findVisited from "../components/quadtreeFindVisited.js";
+import quadtree_nodes from "../components/quadtreeNodes.js";
 
 const random = d3.randomNormal.source(d3.randomLcg(42))();
 const points = Array.from({length: 1000}, () => [random(), random()]);

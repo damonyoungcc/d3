@@ -1,6 +1,6 @@
 <script setup>
 
-import ExampleArcs from "../components/ExampleArcs.vue";
+import ExampleArcs from "../../components/ExampleArcs.vue";
 import {ref} from "vue";
 
 const cornerRadius = ref(18);

@@ -1,7 +1,7 @@
 <script setup>
 
 import * as d3 from "d3";
-import ColorSwatches from "../components/ColorSwatches.vue";
+import ColorSwatches from "../../components/ColorSwatches.vue";
 
 </script>
 

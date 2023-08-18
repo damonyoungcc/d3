@@ -1,7 +1,7 @@
 <script setup>
 
-import ColorSpan from "./components/ColorSpan.vue";
-import ExampleChord from "./components/ExampleChord.vue";
+import ColorSpan from "../components/ColorSpan.vue";
+import ExampleChord from "../components/ExampleChord.vue";
 
 </script>
 

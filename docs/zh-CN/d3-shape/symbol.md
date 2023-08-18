@@ -1,7 +1,7 @@
 <script setup>
 
 import * as Plot from "@observablehq/plot";
-import PlotRender from "../components/PlotRender.js";
+import PlotRender from "../../components/PlotRender.js";
 
 </script>
 

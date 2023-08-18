@@ -3,7 +3,7 @@
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
 import {ref, shallowRef, onMounted} from "vue";
-import PlotRender from "../components/PlotRender.js";
+import PlotRender from "../../components/PlotRender.js";
 
 const riaa = shallowRef([]);
 

@@ -1,7 +1,7 @@
 <script setup>
 
 import * as d3 from "d3";
-import ColorRamp from "./components/ColorRamp.vue";
+import ColorRamp from "../components/ColorRamp.vue";
 
 </script>
 

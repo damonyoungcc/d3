@@ -1,6 +1,6 @@
 <script setup>
 
-import ExampleLinkForce from "../components/ExampleLinkForce.vue";
+import ExampleLinkForce from "../../components/ExampleLinkForce.vue";
 
 </script>
 

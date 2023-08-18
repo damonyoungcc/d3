@@ -1,7 +1,7 @@
 <script setup>
 
 import * as d3 from "d3";
-import ColorSpan from "./components/ColorSpan.vue";
+import ColorSpan from "../components/ColorSpan.vue";
 
 </script>
 

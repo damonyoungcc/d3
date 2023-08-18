@@ -1,6 +1,6 @@
 <script setup>
 
-import ExampleDisjointForce from "./components/ExampleDisjointForce.vue";
+import ExampleDisjointForce from "../components/ExampleDisjointForce.vue";
 
 </script>
 
